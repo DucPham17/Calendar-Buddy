@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import HomeScreen from './screen/HomeScreen';
+import SigninScreen from './screen/SigninScreen';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+    <div className="grid-container">
+      <header  className="header">
+        <div className="brand">
+        <Link to="/">Calendar Buddy</Link>
+        </div>
+        <div className='header-links'>
+          <Link to='signin'>Signin</Link>
+        </div>
       </header>
-    </div>
+      <main>
+      <div className="content">
+      <Route path="/" exact={true} component={HomeScreen} />
+      <Route path="/signin" component={SigninScreen} />
+      </div>
+      </main>
+      <footer className="footer">
+        We help you control your plan
+      </footer>
+     
+     </div>
+    </BrowserRouter>
+    
   );
 }
 
