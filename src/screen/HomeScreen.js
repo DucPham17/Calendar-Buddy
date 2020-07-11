@@ -1,11 +1,32 @@
 import React from 'react';
 
-function HomeScreen(){
+class HomeScreen extends React.Component{
+    constructor(props){
+        super(props);
+        this.state= {
+            time :new Date(),
+        }
+    }
 
-    return(
-        <div>
-        </div>
-    )
+   componentDidMount(){
+    this.timeid = setInterval(() => this.setState({
+        time: new Date()
+    }),1000);
+    
+   }
+
+  
+
+    render(){
+        return(
+            <div>
+                {this.state.time.toLocaleTimeString()}
+            </div>
+        )
+    }
+
+    
+   
 }
 
 export default HomeScreen;
