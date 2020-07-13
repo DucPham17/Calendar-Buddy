@@ -17,7 +17,7 @@ function App() {
             <Link to="/">Calendar Buddy</Link>
           </div>
           <div className='header-links'>
-            {userInfo.userInfo ? <Link to='mainscreen'>{userInfo.userInfo.name}</Link> : <Link to='signin'>Signin</Link>}
+            {userInfo.userInfo ? <Link to='mainscreen'>{userInfo.userInfo.name}</Link> : <Link to='signin'>Sign In</Link>}
           </div>
         </header>
         <main>

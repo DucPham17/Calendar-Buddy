@@ -26,16 +26,18 @@ code {
 
 .header{
   grid-area: header;
-  background-color: rgb(116, 112, 59);
-  color: black;
+  background-color: rgb(136, 185, 219);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 20px;
 }
 
 .header-links a{
   color: white;
   text-decoration: none;
+  font-weight: bolder;
+  padding-right: 30px;
 }
 
 .header-links a:hover{
@@ -43,27 +45,28 @@ code {
   text-decoration: none;
 }
 
-
 .brand a{
   color: white;
   text-decoration: none;
-  padding-left: 5px;
+  padding: 5px;
   font-size: 40px;
 }
 
 .brand a:hover{
   color: lightcoral;
   text-decoration: none;
-  padding-left: 5px;
+  padding: 5px;
   font-size: 40px;
 }
 
 .footer{
   grid-area: footer;
-  background-color: rgb(116, 112, 59);
+  color: white;
+  background-color: rgb(136, 185, 219);
   display: flex; 
   justify-content: center;
   align-items: center;
+  font-weight: bold;
 }
 
 /*Sign in form */
@@ -72,6 +75,7 @@ code {
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 120px;
 }
 
 .form-container{
@@ -79,7 +83,7 @@ code {
   flex-direction: column;
   width: 32rem;
   padding: 2rem;
-  border: 0.1rem black solid;
+  border: 0.2rem #696969 solid;
   border-radius: 0.5rem;
   list-style-type: none;
 }
@@ -89,15 +93,16 @@ code {
   flex-direction: column;
   margin-bottom: 1rem;
 }
+
 input{
   padding: 1rem;
-  border: 0.1rem black solid;
+  border: 0.1rem #696969 solid;
   border-radius: 0.5rem;
 }
 
 .button{
   padding: 1rem;
-  border: 0.1rem black solid;
+  border: 0.1rem #696969 solid;
   border-radius: 0.5rem;
   cursor: pointer
 }
@@ -106,7 +111,7 @@ input{
 }
 
 .button.primary{
-  background-color: burlywood;
+  background-color: rgb(235, 202, 159);
 }
 
 .button.secondary{
@@ -115,4 +120,28 @@ input{
 
 .text-center{
   text-align: center;
+}
+
+.homeScreenStyle {
+  padding: 120px;
+  color: rgb(120, 162, 196);
+  text-align: center;
+  font-size: 250%;
+  font-family: Comic Sans MS;
+}
+
+.buttonContainer {
+  margin: auto;
+  color: rgb(204, 235, 255);
+  background-color: rgb(97, 150, 194);
+  padding: 1rem;
+  border: 0.5rem rgb(92, 142, 184) solid;
+  border-radius: 10rem;
+  width: 70%;
+}
+
+.buttomText {
+  padding:60px;
+  color: #4db6ac;
+  font-family: Apple Chancery, cursive;
 }

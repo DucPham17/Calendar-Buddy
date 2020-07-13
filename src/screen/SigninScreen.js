@@ -41,7 +41,7 @@ function SigninScreen(props) {
                         <label htmlFor="password">Password: </label>
                         <input type="password" name="password" id="password"placeholder="password" onChange={(event) => {setPassword(event.target.value)}}></input>
                     </li>
-                    <li><button type="submit" className="button primary">Sign in</button></li>
+                    <li><button type="submit" className="button primary">Sign In</button></li>
                     <li>If you are a new user</li>
                     <li>Create Your Calendar Buddy Account</li>
                 </ul>
