@@ -40,4 +40,35 @@ router.get("/createadmin", async (req, res) => {
 
 })
 
+router.get("/signup", async (req, res) => {
+    // console.log(req.query);
+    const isRegistered = await User.findOne({
+        username: req.query.username,
+        email: req.query.email,
+    })
+    
+    // console.log(isRegistered)
+    if (isRegistered) {
+        res.status(400).send("Username or email already exists")
+    } else {
+        try {
+            const user = new User({
+                name: req.query.name,
+                email: req.query.email,
+                password: req.query.password,
+            })
+    
+            const newUser = await user.save();
+            res.send({
+                _id: newUser.id,
+                name: newUser.name,
+                email: newUser.email,
+                token: getToken(signinUser)
+            })
+        } catch (error) {
+            res.send({ msg: error.message })
+        }
+    }
+ })
+
 module.exports = router;
