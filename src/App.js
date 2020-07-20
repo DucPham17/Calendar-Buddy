@@ -4,7 +4,9 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import HomeScreen from './screen/HomeScreen';
 import SigninScreen from './screen/SigninScreen';
 import MainScreen from './screen/MainScreen';
+import CreateEventScreen from './screen/CreateEventScreen';
 import { useSelector } from 'react-redux';
+import FindFreeTimeScreen from './screen/FindFreeTimeScreen';
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
             <Route path="/" exact={true} component={HomeScreen} />
             <Route path="/signin" component={SigninScreen} />
             <Route path="/mainscreen" component={MainScreen} />
+            <Route path="/createevent" component={CreateEventScreen} />
+            <Route path="/findfreetime" component={FindFreeTimeScreen} />
           </div>
         </main>
         <footer className="footer">

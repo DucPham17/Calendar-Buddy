@@ -1,29 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      time: new Date()
-    };
-  }
-
-  componentDidMount() {
-    this.timerID = setInterval(() => this.setState({
-        time: new Date()
-      }),1000
+function HomeScreen(props) {
+  const userInfo = useSelector(state => state.signin);
+  const [time,timeSet] = useState(new Date());
+  //console.log(userInfo.userInfo.name);
+  useEffect(() => {
+     setInterval(() => timeSet(new Date()), 1000
     );
-  }
+  })
 
-  render() {
-    return (
-      <div className="homeScreenStyle">
-        <h1>Hello, _____ ! </h1>
-        <h2 className="buttonContainer">{this.state.time.toLocaleTimeString()}</h2>
-        <h3 className="buttomText">- let's plan & meet -</h3>
-      </div>
-    );
-  }
+
+  return (
+    <div className="homeScreenStyle">
+      {userInfo.userInfo ? <h1>Hello, {userInfo.userInfo.name} ! </h1> : <h1>Hello! </h1>}
+      <h2 className="buttonContainer">{time.toLocaleTimeString()}</h2>
+      <h3 className="buttomText">- let's plan & meet -</h3>
+    </div>
+  );
+
 }
 
 export default HomeScreen;
