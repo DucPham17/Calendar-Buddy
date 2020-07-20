@@ -11,14 +11,16 @@ function HomeScreen(props) {
   })
 
 
-  return (
-    <div className="homeScreenStyle">
-      {userInfo.userInfo ? <h1>Hello, {userInfo.userInfo.name} ! </h1> : <h1>Hello! </h1>}
-      <h2 className="buttonContainer">{time.toLocaleTimeString()}</h2>
-      <h3 className="buttomText">- let's plan & meet -</h3>
-    </div>
-  );
+  
+    return (
+      <div className="home-screen">
+        <h1>Hello, _____ ! </h1>
+        <h2 className="home-screen--container">{time.toLocaleTimeString()}</h2>
+        <h3 className="home-screen--bottom-text">- let's plan & meet -</h3>
+      </div>
+    );
+  }
 
-}
+
 
 export default HomeScreen;

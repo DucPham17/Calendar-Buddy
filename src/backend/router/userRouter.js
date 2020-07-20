@@ -10,7 +10,6 @@ router.post("/signin", async (req, res) => {
         password: req.body.password
     })
 
-    // console.log(signinUser)
     if (signinUser) {
         res.send({
             _id: signinUser.id,
@@ -40,6 +39,7 @@ router.get("/createadmin", async (req, res) => {
     }
 
 })
+
 
 router.post("/geteventlist", async (req, res) => {
     const dateCheck = new Date(" " + req.body.date)
@@ -182,6 +182,37 @@ router.post("/findfreetime", async (req, res) => {
     }
 })
 
+
+
+router.post("/signup", async (req, res) => {
+    // console.log(req.body);
+    const isRegistered = await User.findOne({
+        email: req.body.email
+    })
+    
+    // console.log(isRegistered)
+    if (isRegistered) {
+        res.status(400).send("Username or email already exists")
+    } else {
+        try {
+            const user = new User({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+            })
+    
+            const newUser = await user.save();
+            res.send({
+                _id: newUser.id,
+                name: newUser.name,
+                email: newUser.email,
+                token: getToken(newUser)
+            })
+        } catch (error) {
+            res.send({ msg: error.message })
+        }
+    }
+ })
 
 
 module.exports = router;

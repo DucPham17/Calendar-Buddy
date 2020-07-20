@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { signin } from '../action/userAction';
+import { signup } from '../action/userAction';
 
-function SigninScreen(props) {
+function SignUpScreen(props) {
+    const[name, setName] = useState('');
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
     const userInfo = useSelector(state => state.signin);
     const {loading, error} = userInfo;
-   // console.log(userInfo);
+    // console.log(userInfo);
     const dispatch = useDispatch();
 
     useEffect(() => {
+        //console.log(userInfo.userInfo);
         if(userInfo.userInfo){
             props.history.push("/mainscreen");
         }
@@ -19,7 +21,7 @@ function SigninScreen(props) {
 
     const submitHandler = (e) =>{
         e.preventDefault();
-        dispatch(signin(email,password));
+        dispatch(signup(name, email, password));
     }
 
     return (
@@ -28,10 +30,14 @@ function SigninScreen(props) {
             <form method="POST" onSubmit={submitHandler}>
                 <ul className="form--container">
                     <li>
-                       <h3> Sign In </h3>
+                       <h3> Sign Up </h3>
                     </li>
                     <li>
-                    {loading? <div>Loading...</div> : error? <div>Wrong in email or password</div> : null}
+                    {loading? <div>Loading...</div> : error? <div>Email already exists</div> : null}
+                    </li>
+                    <li >
+                        <label htmlFor="name">Username: </label>
+                        <input type="text" name="name" id="name" placeholder="name" onChange={(event) => {setName(event.target.value)}}></input>
                     </li>
                     <li >
                         <label htmlFor="email">Email: </label>
@@ -41,13 +47,13 @@ function SigninScreen(props) {
                         <label htmlFor="password">Password: </label>
                         <input type="password" name="password" id="password"placeholder="password" onChange={(event) => {setPassword(event.target.value)}}></input>
                     </li>
-                    <li><button type="submit" className="button primary">Sign In</button></li>
-                    <li>If you are a new user</li>
-                    <Link to="/signup">Create Your Calendar Buddy Account</Link>
+                    <li><button type="submit" className="button primary">Sign Up</button></li>
+                    <li>Already has an account?</li>
+                    <Link to="/signin">Back to Sign In</Link>
                 </ul>
             </form>
         </div>
     )
 }
 
-export default SigninScreen;
+export default SignUpScreen;
