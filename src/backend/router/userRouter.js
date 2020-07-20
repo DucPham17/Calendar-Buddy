@@ -10,7 +10,7 @@ router.post("/signin", async (req, res) => {
         password: req.body.password
     })
     
-    // console.log(signinUser)
+    console.log(signinUser)
     if (signinUser) {
         res.send({
             _id: signinUser.id,
@@ -40,11 +40,10 @@ router.get("/createadmin", async (req, res) => {
 
 })
 
-router.get("/signup", async (req, res) => {
-    // console.log(req.query);
+router.post("/signup", async (req, res) => {
+    // console.log(req.body);
     const isRegistered = await User.findOne({
-        username: req.query.username,
-        email: req.query.email,
+        email: req.body.email
     })
     
     // console.log(isRegistered)
@@ -53,9 +52,9 @@ router.get("/signup", async (req, res) => {
     } else {
         try {
             const user = new User({
-                name: req.query.name,
-                email: req.query.email,
-                password: req.query.password,
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
             })
     
             const newUser = await user.save();
@@ -63,7 +62,7 @@ router.get("/signup", async (req, res) => {
                 _id: newUser.id,
                 name: newUser.name,
                 email: newUser.email,
-                token: getToken(signinUser)
+                token: getToken(newUser)
             })
         } catch (error) {
             res.send({ msg: error.message })

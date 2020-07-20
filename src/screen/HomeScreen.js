@@ -17,10 +17,10 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <div className="homeScreenStyle">
+      <div className="home-screen">
         <h1>Hello, _____ ! </h1>
-        <h2 className="buttonContainer">{this.state.time.toLocaleTimeString()}</h2>
-        <h3 className="buttomText">- let's plan & meet -</h3>
+        <h2 className="home-screen--container">{this.state.time.toLocaleTimeString()}</h2>
+        <h3 className="home-screen--bottom-text">- let's plan & meet -</h3>
       </div>
     );
   }
