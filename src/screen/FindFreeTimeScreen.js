@@ -20,7 +20,7 @@ function FindFreeTimeScreen(props) {
     return(
         <div className="form">             
             <form method="POST" onSubmit={submitHandler}>
-                <ul className="form-container">
+                <ul className="form--container">
                     <li>
                        <h3> Find Free Time </h3>
                     </li>

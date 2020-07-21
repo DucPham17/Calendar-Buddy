@@ -48,7 +48,7 @@ function MainScreen(props) {
                 <button className="button primary" onClick={handleFindFreeTime}>Find Free Time</button>
                 <button className="button primary" onClick={handleCreateEvent}>Create Event</button>
                 <form method="POST" onSubmit={submitHandler}>
-                    <ul className="form-container">
+                    <ul className="form--container">
                         <li>
                             <label htmlFor="date">Check Date: </label>
                             <input type="string" name="date" id="date" placeholder="Form: yyyy/mm/dd" onChange={(event) => { setDate(event.target.value) }}></input>

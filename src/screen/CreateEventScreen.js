@@ -34,7 +34,7 @@ function CreateEventScreen(props) {
         <div className="form">
                      
             <form method="POST" onSubmit={submitHandler}>
-                <ul className="form-container">
+                <ul className="form--container">
                     <li>
                        <h3> Create Event </h3>
                     </li>
