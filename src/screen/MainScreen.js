@@ -36,7 +36,10 @@ function MainScreen(props) {
         }
 
     }
-    
+    //Fix this function
+     function deleteHandler(id){
+        console.log(id);
+    }
 
     return (
         userInfo.userInfo ?
@@ -59,7 +62,7 @@ function MainScreen(props) {
                     </ul>
                 </form>
                 {eventList.eventList ? <ul className="event-container">{eventList.eventList.map(d =>
-                    <li>
+                    <li key={d._id}>
                         <Card style={{ width: '18rem' }}>
                             <Card.Body>
                                 <Card.Title>{d.title}</Card.Title>
@@ -68,8 +71,8 @@ function MainScreen(props) {
                                     <br />
                                     {"End Time: "+new Date(d.endDate).toDateString()+" "+new Date(d.endDate).getHours()+":"+new Date(d.endDate).getMinutes()}
                                 </Card.Text>
-                                <Card.Link href="#" className="event-container-link">Delete  </Card.Link>
-                                <Card.Link href="#" className="event-container-link">Update</Card.Link>
+                                <button onClick={() => deleteHandler(d._id)}><Card.Link href="#" className="event-container-link">Delete  </Card.Link></button>
+                                <button ><Card.Link href={"/updateevent?id="+d._id} className="event-container-link">Update</Card.Link></button>
                             </Card.Body>
                         </Card>
                     </li>

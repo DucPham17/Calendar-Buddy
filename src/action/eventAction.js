@@ -21,3 +21,19 @@ export const createEvent = (event) => async (dispatch,getState) => {
         })
     }
 }
+
+export const updateEvent = (event) => async (dispatch,getState) => {
+    try {
+        const { signin: { userInfo } } = getState();
+        const {eventCreated} = await Axios.post("/api/event/updateevent",event, {
+            headers: {
+                'Authorization': 'DucPham' + userInfo.token
+            }
+        })
+        console.log(eventCreated);
+        
+
+    } catch (error) {
+        console.log(error);
+    }
+}

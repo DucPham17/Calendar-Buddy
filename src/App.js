@@ -8,6 +8,7 @@ import MainScreen from './screen/MainScreen';
 import CreateEventScreen from './screen/CreateEventScreen';
 import { useSelector } from 'react-redux';
 import FindFreeTimeScreen from './screen/FindFreeTimeScreen';
+import UpdateEventScreen from './screen/UpdateEventScreen';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="/mainscreen" component={MainScreen} />
             <Route path="/createevent" component={CreateEventScreen} />
             <Route path="/findfreetime" component={FindFreeTimeScreen} />
+            <Route path="/updateevent" component={UpdateEventScreen}/>
           </div>
         </main>
         <footer className="grid-container--footer">
