@@ -1,61 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getFreeTime } from '../action/findFreetimeAction';
-import Card from 'react-bootstrap/Card'
+import NavTabs from '../component/NavTabs';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 function FindFreeTimeScreen(props) {
-
-
     const[date, setDate] = useState();
     const[friendId, setFriendId] = useState();
     const userInfo = useSelector(state => state.signin);
     const freetime = useSelector(state => state.freetime);
     const{loading,freetimeSlot,error} = freetime;
     const dispatch = useDispatch();
+    const classes = useStyles();
+
     const submitHandler = (e) => {
         e.preventDefault();
         if(userInfo.userInfo && date && friendId){
             dispatch(getFreeTime(date,friendId,userInfo.userInfo._id));
         }  
     }
+
     return(
+        <div>
+        <NavTabs />
         <div className="form">             
             <form method="POST" onSubmit={submitHandler}>
-                <ul className="form--container">
-                    <li>
-                       <h3> Find Free Time </h3>
-                    </li>
+                <ul className="request-form--container">
                     <li>
                     {loading? <div>Loading...</div> : error? <div>Wrong in Id user or date form</div> : null}
                     </li>
                     <li >
-                        <label htmlFor="friendId">Friend Id: </label>
+                        <label htmlFor="friendId">Friend ID: </label>
                         <input type="string" name="friendId" id="friendId" placeholder="Friend Id" onChange={(event) => {setFriendId(event.target.value)}}></input>
                     </li>
                     <li>
                         <label htmlFor="date">Date: </label>
-                        <input type="string" name="date" id="date"placeholder="Form: yyyy/mm/dd" onChange={(event) => {setDate(event.target.value)}}></input>
+                        <input type="string" name="date" id="date"placeholder="yyyy-mm-dd" onChange={(event) => {setDate(event.target.value)}}></input>
                     </li>
-                    <li><button type="submit" className="button primary">Find</button></li>
+                    <li><button type="submit">Find</button></li>
                 </ul>
             </form>
-            <div>
-                <h3>Free Time For Meeting:</h3>
-            {freetimeSlot? <ul className="event-container">{freetimeSlot.map(d =>
-                    <li key={freetimeSlot.indexOf(d)}>
-                        <Card style={{ width: '18rem' }}>
-                            <Card.Body>
-                                <Card.Title>{d.title}</Card.Title>
-                                <Card.Text>
-                                    {"Start Time: "+ d.start}
-                                    <br />
-                                    {"End Time: "+d.end}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </li>
-                )}</ul> : null}
+            {freetimeSlot?  <ul style={{color:'#4db6ac', fontWeight: 900}}>You and your friend are both available at these times:{freetimeSlot.map(d =>
+                <Card className={classes.root} key={freetimeSlot.indexOf(d)}>
+                <CardContent>
+                    <Typography variant="body3" color="textSecondary" component="p">
+                        {"Start Time: "+ d.start}
+                        <br />
+                        {"End Time: "+d.end}
+                    </Typography>
+                </CardContent>
+            </Card>
+            )}</ul> : null}
             </div>
         </div>
     )
 }
+
 export default FindFreeTimeScreen;
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        width: 300,
+        backgroundColor: "#e0f2f1",
+        margin: 12,
+    },
+}));
