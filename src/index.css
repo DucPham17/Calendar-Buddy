@@ -127,7 +127,6 @@ input{
 /*Home Screen*/
 
 .home-screen {
-
   padding: 120px;
   color: rgb(120, 162, 196);
   text-align: center;
@@ -151,26 +150,55 @@ input{
   font-family: Apple Chancery, cursive;
 }
 
-/*Main Screen*/
-.event-container{
+.request-form{
   display: flex;
   flex-direction: column;
-  width: 32rem;
-  padding: 2rem;
-  border: 0.2rem #696969 solid;
-  border-radius: 0.5rem;
-  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
 }
 
-.event-container li{
+.request-form--container{
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  padding: 2rem;
+  border: 0.3rem #b0bec5 solid;
+  background-color:  #b0bec5;
+  border-radius: 0.5rem;
+}
+
+.request-form--container li{
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-  border: 0.5px solid black;
-  border-radius: 0.5rem;
-  
+  font-weight: 900;
 }
 
-.event-container-link{
-  text-decoration: none;
+.request-form--container label{
+  color: #fff;
+  padding: 10px;
+}
+
+.request-form--container input{
+  padding: 1rem;
+  border: 0.2rem #f5f5f5 solid;
+  border-radius: 0.5rem;
+  background-color:  #f5f5f5;
+  font-weight: 600;
+}
+
+.request-form--container button{
+  margin: auto;
+  align-self: center;
+  color: #fff;
+  font-weight: 900;
+  background-color: #b2dfdb;
+  padding: 0.5rem;
+  border: 0.2rem #e0f2f1 solid;
+  width: 65%;
+}
+
+.request-button{
+  margin: 10;
 }
