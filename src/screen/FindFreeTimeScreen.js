@@ -5,10 +5,9 @@ import NavTabs from '../component/NavTabs';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 function FindFreeTimeScreen(props) {
     const[date, setDate] = useState();
     const[friendId, setFriendId] = useState();
@@ -24,10 +23,18 @@ function FindFreeTimeScreen(props) {
             dispatch(getFreeTime(date,friendId,userInfo.userInfo._id));
         }  
     }
+    const handleSeeWeather = () => {
+        props.history.push("/seeweather")
+    }
 
     return(
         <div>
         <NavTabs />
+        <Fab className={classes.fab} variant="extended" color="primary" onClick={handleSeeWeather}>
+                    <AddIcon />
+                    What to do today?
+                </Fab>
+
         <div className="form">             
             <form method="POST" onSubmit={submitHandler}>
                 <ul className="request-form--container">

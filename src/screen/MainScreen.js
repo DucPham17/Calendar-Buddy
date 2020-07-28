@@ -47,7 +47,7 @@ function MainScreen(props) {
      function deleteHandler(id){
         console.log(id);
     }
-
+    
     return (
         userInfo.userInfo ?
             <div>
@@ -55,7 +55,7 @@ function MainScreen(props) {
                 <Fab className={classes.fab} variant="extended" color="primary" onClick={handleCreateEvent}>
                     <AddIcon />
                     Add Event
-                </Fab>
+                </Fab>  
                 <div className="request-form">    
                     <form method="POST" onSubmit={submitHandler}>
                         <ul className="request-form--container">

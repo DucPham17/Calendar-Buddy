@@ -10,6 +10,7 @@ import CreateEventScreen from './screen/CreateEventScreen';
 import { useSelector } from 'react-redux';
 import FindFreeTimeScreen from './screen/FindFreeTimeScreen';
 import UpdateEventScreen from './screen/UpdateEventScreen';
+import SeeWeatherScreen from './screen/SeeWeatherScreen';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/createevent" component={CreateEventScreen} />
             <Route path="/findfreetime" component={FindFreeTimeScreen} />
             <Route path="/updateevent" component={UpdateEventScreen}/>
+            <Route path="/seeweather" component={SeeWeatherScreen}/>
           </div>
         </main>
         <footer className="grid-container--footer">
