@@ -37,3 +37,22 @@ export const updateEvent = (event) => async (dispatch,getState) => {
         console.log(error);
     }
 }
+
+export const deleteEvent = (event) => async (dispatch,getState) => {
+    try {
+        const { signin: { userInfo } } = getState();
+        const {eventDeleted} = await Axios.delete("/api/event/deleteevent", {
+            headers: {
+                'Authorization': 'DucPham' + userInfo.token
+            },
+            data: {
+                _id: event._id,
+                email: event.email
+            }
+        })
+        console.log(eventDeleted);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}

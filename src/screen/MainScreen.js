@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getEventList } from '../action/eventProcessAction';
+import { deleteEvent } from '../action/eventAction';
 import NavTabs from '../component/NavTabs';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
@@ -21,6 +22,9 @@ function MainScreen(props) {
     const dispatch = useDispatch();
     const classes = useStyles();
     
+    const event = useSelector(state => state.event);
+    const{loading, payload,error} = event;
+
     useEffect(() => {
         if (!userInfo.userInfo) {
             props.history.push("/")
@@ -43,9 +47,14 @@ function MainScreen(props) {
 
     }
 
-    //Fix this function
-     function deleteHandler(id){
-        console.log(id);
+    function deleteHandler(id){
+        if (userInfo.userInfo) {
+            const event = {
+                _id: id,
+                email: userInfo.userInfo.email
+            }
+            dispatch(deleteEvent(event));
+        }
     }
 
     return (
@@ -79,14 +88,14 @@ function MainScreen(props) {
                             }
                         />
                         <CardContent>
-                            <Typography variant="body3" color="textSecondary" component="p">
+                            <Typography variant="body2" color="textSecondary" component="p">
                                 {"Start Time: "+ new Date(d.startDate).toDateString()+" "+new Date(d.startDate).getHours()+":"+new Date(d.startDate).getMinutes()}
                                 <br />
                                 {"End Time: "+new Date(d.endDate).toDateString()+" "+new Date(d.endDate).getHours()+":"+new Date(d.endDate).getMinutes()}
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button size="small" color="primary" >
+                            <Button size="small" color="primary" onClick={() => deleteHandler(d._id)}>
                                 Remove
                             </Button>
                         </CardActions>
