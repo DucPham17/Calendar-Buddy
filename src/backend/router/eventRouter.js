@@ -3,6 +3,7 @@ const Event = require("../model/eventModel")
 const {isAuth} = require("../util");
 const User = require("../model/userModel");
 const router = express.Router();
+var ObjectId = require('mongodb').ObjectID;
 
 router.post("/createevent", async (req,res) => {
     if(isAuth){
@@ -75,5 +76,25 @@ router.post("/updateevent", async (req,res) => {
         res.status(401).send("Please Sign In!");
     }
 })
+
+router.delete("/deleteevent", async (req,res) => {
+    if(isAuth){
+        //await Event.findOneAndDelete({_id: req.body._id});
+        
+        const user = await User.findOne({email: req.body.email});
+        const eventList = user.events;
+ 
+        for(let i = 0; i < eventList.length;i++){
+            if(eventList[i]._id == req.body._id){
+                eventList.splice(i,1);
+                break;
+            }
+        }
+        await User.findOneAndUpdate({email: req.body.email},{events: eventList});
+    }
+    else{
+        res.status(401).send("Please Sign In!");
+    }
+ })
 
 module.exports = router;
