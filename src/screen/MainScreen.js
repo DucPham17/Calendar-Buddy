@@ -55,6 +55,7 @@ function MainScreen(props) {
             }
             dispatch(deleteEvent(event));
         }
+        window.location.reload()
     }
     
     return (
