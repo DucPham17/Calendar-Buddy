@@ -2,12 +2,15 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
+import { makeStyles } from '@material-ui/core/styles';
+
 function WeatherDisplay(props) {
+    const classes = useStyles();
     
     return (
-        <div>
-            <Card>
-                <CardHeader title="Weather Today:" />
+        <div className="weather-form">
+            <Card className={classes.root}> 
+                <CardHeader title="Today's Weather:" />
                 <CardContent>
                     <div>Dew Point: {props.dew_point} Celsius</div>
                     <div>Temperature Feel Like: {props.feels_like} Celsius</div>
@@ -27,7 +30,7 @@ function WeatherDisplay(props) {
                      : 
                     <div>
                         <i className='far fa-sun' style={{fontSize: 36}}></i>
-                        <h3>It will be warm today, Go out side and do something </h3>
+                        <h3>It will be warm today, Go outside and do something </h3>
                         <i className='far fa-sun' style={{fontSize: 36}}></i>
                         
                         </div>}</div>
@@ -38,3 +41,10 @@ function WeatherDisplay(props) {
 }
 
 export default WeatherDisplay;
+
+const useStyles = makeStyles({
+    root: {
+      width: 500,
+      backgroundColor: "#fafafa",
+    },
+});

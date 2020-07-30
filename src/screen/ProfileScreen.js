@@ -8,6 +8,7 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import ClockSVG from '../component/clock.svg';
 
 function ProfileScreen(props) {
     const userInfo = useSelector(state => state.signin);
@@ -47,6 +48,7 @@ function ProfileScreen(props) {
                 </CardActions>
             </Card>
             </div>
+            <img src={ClockSVG} style={{ float: 'right', height: 400, width: 400, marginRight: 100 }}/> 
         </div>
         : null
     )
@@ -57,7 +59,7 @@ export default ProfileScreen;
 const useStyles = makeStyles({
     root: {
       width: 345,
-      backgroundColor: "#e0f2f1",
+      backgroundColor: "#fafafa",
     },
 });
 

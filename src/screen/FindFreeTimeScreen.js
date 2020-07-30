@@ -34,7 +34,6 @@ function FindFreeTimeScreen(props) {
                     <AddIcon />
                     What to do today?
                 </Fab>
-
         <div className="form">             
             <form method="POST" onSubmit={submitHandler}>
                 <ul className="request-form--container">
@@ -52,7 +51,7 @@ function FindFreeTimeScreen(props) {
                     <li><button type="submit">Find</button></li>
                 </ul>
             </form>
-            {freetimeSlot?  <ul style={{color:'#4db6ac', fontWeight: 900}}>You and your friend are both available at these times:{freetimeSlot.map(d =>
+            {freetimeSlot?  <ul style={{color:'#616161', fontWeight: 900}}>You and your friend are both available at these times:{freetimeSlot.map(d =>
                 <Card className={classes.root} key={freetimeSlot.indexOf(d)}>
                 <CardContent>
                     <Typography variant="body3" color="textSecondary" component="p">
@@ -75,5 +74,10 @@ const useStyles = makeStyles((theme) => ({
         width: 300,
         backgroundColor: "#e0f2f1",
         margin: 12,
+    },
+    fab: {
+        position: 'absolute',
+        top: theme.spacing(23),
+        right: theme.spacing(5),
     },
 }));

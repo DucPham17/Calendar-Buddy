@@ -57,7 +57,7 @@ function SeeWeatherScreen(props) {
     }
 
     return (
-        <div>
+        <div style={{textAlign: 'center', padding: 100}}>
             <button className="button primary" onClick={handleGetWeather}>Your weather and our suggestion!</button>
             {dew_point?<div>
                 <WeatherDisplay dew_point={dew_point} feels_like={feels_like} humidity={humidity}

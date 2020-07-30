@@ -75,7 +75,7 @@ code {
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 120px;
+  padding-top: 120px;
 }
 
 .form--container{
@@ -83,7 +83,8 @@ code {
   flex-direction: column;
   width: 32rem;
   padding: 2rem;
-  border: 0.2rem #696969 solid;
+  border: 0.1rem #bdbdbd solid;
+  background-color: #fafafa;
   border-radius: 0.5rem;
   list-style-type: none;
 }
@@ -97,13 +98,13 @@ code {
 
 input{
   padding: 1rem;
-  border: 0.1rem #696969 solid;
+  border: 0.1rem #bdbdbd solid;
   border-radius: 0.5rem;
 }
 
 .button{
   padding: 1rem;
-  border: 0.1rem #696969 solid;
+  border: 0.1rem #4db6ac solid;
   border-radius: 0.5rem;
   cursor: pointer
 }
@@ -112,7 +113,9 @@ input{
 }
 
 .button.primary{
-  background-color: rgb(235, 202, 159);
+  background-color: #4db6ac;
+  color: #fff;
+  font-weight: 900;
 }
 
 .button.secondary{
@@ -150,14 +153,6 @@ input{
   font-family: Apple Chancery, cursive;
 }
 
-.request-form{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 60px;
-}
-
 .request-form--container{
   display: flex;
   flex-direction: column;
@@ -165,7 +160,7 @@ input{
   padding: 2rem;
   border: 0.3rem #b0bec5 solid;
   background-color:  #b0bec5;
-  border-radius: 0.5rem;
+  border-radius: 0.1rem;
 }
 
 .request-form--container li{
@@ -203,3 +198,9 @@ input{
   margin: 10;
 }
 
+.weather-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}

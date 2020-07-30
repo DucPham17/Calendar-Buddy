@@ -79,8 +79,6 @@ router.post("/updateevent", async (req,res) => {
 
 router.delete("/deleteevent", async (req,res) => {
     if(isAuth){
-        //await Event.findOneAndDelete({_id: req.body._id});
-        
         const user = await User.findOne({email: req.body.email});
         const eventList = user.events;
  

@@ -66,7 +66,7 @@ function MainScreen(props) {
                     <AddIcon />
                     Add Event
                 </Fab>  
-                <div className="request-form">    
+                <div className="form">    
                     <form method="POST" onSubmit={submitHandler}>
                         <ul className="request-form--container">
                             <li>
