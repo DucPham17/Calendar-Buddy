@@ -9,7 +9,6 @@ export const signin = (email, password) => async (dispatch) => {
     });
         
     try {
-        // console.log(email, password);
         const {data} = await Axios.post("/api/users/signin",{email,password})
         
         dispatch({

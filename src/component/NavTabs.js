@@ -20,6 +20,7 @@ function NavTabs() {
 	const [value, setValue] = React.useState(0);
 
 	const handleChange = (event, newValue) => {
+		event.preventDefault();
 		setValue(newValue);
 	};
 
